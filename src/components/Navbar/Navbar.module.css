@@ -1,0 +1,38 @@
+.nav {
+    grid-area: nav;
+    background-color: #fff;
+    margin-right: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #313131;
+}
+
+nav a.active {
+    color: #ff7400;
+}
+
+nav a:hover {
+    cursor: pointer;
+    color: #999;
+}
+
+.friends h3 {
+    padding-left: 20px;
+}
+
+.friendPhoto {
+    width: 40px !important;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    object-fit: cover;
+}
+
+.friendBlock {
+    display: inline-block;
+    margin: 10px;
+    max-width: 40px;
+    overflow: hidden;
+}

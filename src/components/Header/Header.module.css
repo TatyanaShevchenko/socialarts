@@ -1,0 +1,48 @@
+.header {
+    background-color: #313131;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 15px;
+}
+
+.header__icon {
+    background-color: #ff7400;
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+}
+
+.header__icon_link {
+    display: block;
+    height: 100%;
+}
+
+.header a {
+    color: #fff;
+}
+
+.header span {
+    color: #ff7400;
+    font-weight: 700;
+}
+.loginBlock{
+    color: #fff;
+    text-decoration: underline;
+}
+.loginBlock:hover{
+    color: #ff7400;
+    cursor: pointer;
+}
+.header__title {
+    font-size: 36px;
+    display: inline-block;
+    margin-left: 15px;
+}

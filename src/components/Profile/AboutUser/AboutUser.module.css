@@ -1,0 +1,74 @@
+.aboutMe {
+    text-align: center;
+
+}
+
+.background {
+    max-height: 250px;
+    overflow: hidden;
+}
+
+.myInfo {
+    position: relative;
+    padding: 15px 0;
+}
+.bold{
+    font-weight: 700;
+}
+.findAJob {
+    margin-right: 15px;
+    font-weight: 700;
+}
+.flex{
+    display: flex;
+    align-items: center;
+}
+.avatar {
+    position: absolute;
+    background-color: #ffd8b4;
+    top: -75px;
+    left: calc(100% / 2 - 75px);
+    width: 150px !important;
+    height: 150px;
+    border: 3px solid #ef6523;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.needJobPic{
+    width: 30px !important;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.description {
+    margin-top: 85px;
+    text-align: center;
+}
+
+.description h4 {
+    margin-bottom: 10px;
+}
+
+.description p {
+    margin: 0;
+}
+
+.stuff {
+    margin: 10px 0;
+    background-color: #f7fdff;
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    font-size: 14px;
+}
+.status{
+    margin: 10px;
+
+}
+.statusInput{
+    border: 1px solid #999999;
+    border-radius: 4px;
+    height: 40px;
+    max-width: 260px;
+    width: 100%;
+}

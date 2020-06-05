@@ -1,0 +1,79 @@
+.wrapper {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px;
+    padding: 10px;
+    background-color: #ffecdb;
+}
+
+.graphic {
+    margin-right: 15px;
+}
+
+.avatar {
+    width: 75px !important;
+    height: 75px;
+    border-radius: 50%;
+    border: 2px solid #cf5214;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.description {
+    flex-grow: 1;
+    margin: 10px 25px 10px 10px;
+}
+
+.name {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.status {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 5px;
+    background-color: #ffd8b4;
+    max-width: 400px;
+    overflow: hidden;
+
+}
+
+.location {
+    margin: 10px;
+}
+
+.location__item {
+    margin: 0;
+}
+
+.pagesList {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: #ffd8b4;
+}
+
+.pagesList li:hover {
+    cursor: pointer;
+    color: #999999;
+}
+
+.pagesList li {
+    margin-right: 5px;
+}
+
+.selectedPage {
+    font-weight: 700;
+    color: #cf5214;
+}
+
+.unfollow{
+    background-color: #cc0b0b;
+    border: #ac0000;
+}
+.unfollow:hover{
+    background-color: #ac0000;
+    border: #8a0000;
+}

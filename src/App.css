@@ -1,0 +1,31 @@
+.app-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 1030px;
+    margin: 0 auto;
+}
+
+.container-main {
+    flex: 1;
+}
+
+.grid__container-main {
+    display: grid;
+    grid-template-areas: "nav content";
+    grid-template-columns: 3fr 9fr;
+    width: 1030px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.grid__container-content {
+    grid-area: content;
+    background-color: #fff;
+    margin: 0;
+}
+
