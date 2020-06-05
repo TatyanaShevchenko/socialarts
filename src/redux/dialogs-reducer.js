@@ -1,5 +1,4 @@
 const SEND_MESSAGE = 'SEND-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
     dialogs: [
@@ -33,14 +32,6 @@ const dialogsReducer = (state = initialState, action) => {
             }
         }
 
-
-        case UPDATE_NEW_MESSAGE_TEXT: {
-            return {
-                ...state,
-                newMessageText: action.text
-            }
-        }
-
         default:
             return state;
     }
@@ -50,10 +41,5 @@ export const sendMessage = (newMessageBody) => ({
     type: SEND_MESSAGE,
     newMessageBody: newMessageBody
 });
-export const updateNewMessageText = (text) => ({
-    type: UPDATE_NEW_MESSAGE_TEXT,
-    text: text
-});
-
 
 export default dialogsReducer;

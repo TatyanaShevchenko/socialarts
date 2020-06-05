@@ -1,8 +1,5 @@
 import React from "react";
-import {
-    sendMessage,
-    updateNewMessageText
-} from "../../../redux/dialogs-reducer";
+import {sendMessage} from "../../../redux/dialogs-reducer";
 import SendMessage from "./SendMessage";
 import {connect} from "react-redux";
 
@@ -16,6 +13,6 @@ let mapStateToProps = (state) => {
 }
 
 
-const SendMessageContainer  = connect(mapStateToProps, {sendMessage,updateNewMessageText})(SendMessage);
+const SendMessageContainer  = connect(mapStateToProps, {sendMessage})(SendMessage);
 
 export default SendMessageContainer;
