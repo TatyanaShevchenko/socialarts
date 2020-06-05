@@ -14,7 +14,6 @@ let initialState = {
         { id: 5, message: 'Ahahahaa', likesCount: 33 },
         { id: 6, message: "Super message", likesCount: 14 }
     ],
-    newPostText: 'Add your post :-)',
     profile: null,
     status: ""
 };
@@ -29,8 +28,7 @@ const profileReducer = (state = initialState, action) => {
                     id: state.posts.length + 1,
                     message: action.newPostBody,
                     likesCount: 0
-                }],
-                newPostText: ''
+                }]
             }
 
         case SET_USER_PROFILE:
