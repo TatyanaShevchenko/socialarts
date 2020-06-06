@@ -34,15 +34,23 @@
     font-weight: 700;
 }
 .loginBlock{
+    display: flex;
+    align-items: center;
+}
+.loginP{
     color: #fff;
     text-decoration: underline;
 }
-.loginBlock:hover{
+
+.loginP:hover{
     color: #ff7400;
     cursor: pointer;
 }
 .header__title {
     font-size: 36px;
     display: inline-block;
+    margin-left: 15px;
+}
+.logoutBtn{
     margin-left: 15px;
 }

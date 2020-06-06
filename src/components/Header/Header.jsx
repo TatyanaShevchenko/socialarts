@@ -3,6 +3,7 @@ import style from "./Header.module.css";
 import {NavLink} from "react-router-dom";
 
 
+
 const Header = (props) => {
   return (
     <header className={style.header}>
@@ -19,8 +20,10 @@ const Header = (props) => {
           </div>
           </div>
 
-          <div className={style.loginBlock}>
-            {props.isAuth ? props.login : <NavLink to={'/login'}>Login</NavLink>}
+          <div>
+            {props.isAuth
+                ? <div className={style.loginBlock}><p className={style.loginP}>{props.login}</p><button className={style.logoutBtn} onClick={props.logoutThunkCreator}>Log Out</button></div>
+                : <NavLink to={'/login'}>Login</NavLink>}
             </div>
         </div>
       </div>
