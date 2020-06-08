@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Login.module.css";
+import formStyle from "../common/FormsControls/FormsControls.module.css"
 import {Field, reduxForm} from "redux-form";
 import {Checkbox, Input} from "../common/FormsControls/FormsControls";
 import {requiredField} from "../../utils/validators/validators";
@@ -33,6 +34,7 @@ let LoginForm = (props) => {
                     component={Checkbox}/>
                 remember me
             </div>
+            {props.error ? <div className={formStyle.divError}>{props.error}</div> : ""}
             <button className={style.btn}>Login</button>
         </form>
     )

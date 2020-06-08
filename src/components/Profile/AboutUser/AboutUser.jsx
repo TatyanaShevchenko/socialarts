@@ -3,7 +3,7 @@ import style from "./AboutUser.module.css";
 import Loading from "../../common/Loading/Loading";
 import yes from "../../../images/needJobTrue.png";
 import no from "../../../images/needJobFalse.png"
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const AboutUser = (props) => {
     if (!props.profile) {
@@ -33,7 +33,7 @@ const AboutUser = (props) => {
                 <div className={style.description}>
                     <h3>{props.profile.fullName}</h3>
                     <p>{props.profile.aboutMe}</p>
-                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
                 </div>
                 <div className={style.stuff}>
                     <div className={style.contacts}>

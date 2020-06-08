@@ -44,9 +44,17 @@ button:hover {
     color: white;
 }
 .error input,
-.error textarea
+.error textarea,
+.divError
 {
-    border: 2px solid #cc0b0b;
+    border: 2px solid #ac0000;
+}
+.divError{
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #cc0b0b;
+    color: white;
+    margin-bottom: 15px;
 }
 .error .errorImageTA{
     opacity: .8;
