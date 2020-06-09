@@ -30,9 +30,9 @@ a {
   cursor: pointer;
 }
 
-a.active{
-  color: #ef6523;
-}
+/*a.active{*/
+/*  color: #ef6523;*/
+/*}*/
 button{
   cursor: pointer;
   font-size: 16px;

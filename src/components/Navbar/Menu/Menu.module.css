@@ -4,6 +4,10 @@
     padding-left: 30px;
 }
 
+.item a:active {
+    color: #ef6523;
+}
+
 .profile, .message, .news, .music, .settings, .findfriends {
     position: relative;
 }
@@ -17,6 +21,7 @@
     left: 10px;
     top: 2px;
 }
+
 .message::before {
     content: "\f003";
     font-family: 'icomoon';
@@ -26,7 +31,8 @@
     left: 10px;
     top: 2px;
 }
-.news::before{
+
+.news::before {
     content: "\f18d";
     font-family: 'icomoon';
     font-size: 12px;
@@ -35,7 +41,8 @@
     left: 10px;
     top: 2px;
 }
-.music::before{
+
+.music::before {
     content: "\f025";
     font-family: 'icomoon';
     font-size: 12px;
@@ -44,16 +51,18 @@
     left: 10px;
     top: 2px;
 }
-.settings::before{
-     content: "\f085";
-     font-family: 'icomoon';
-     font-size: 12px;
-     color: #999;
-     position: absolute;
-     left: 10px;
-     top: 2px;
- }
-.findfriends::before{
+
+.settings::before {
+    content: "\f085";
+    font-family: 'icomoon';
+    font-size: 12px;
+    color: #999;
+    position: absolute;
+    left: 10px;
+    top: 2px;
+}
+
+.findfriends::before {
     content: "\f0c0";
     font-family: 'icomoon';
     font-size: 12px;

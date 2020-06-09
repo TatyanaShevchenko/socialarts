@@ -10,10 +10,6 @@ a {
     color: #313131;
 }
 
-nav a.active {
-    color: #ff7400;
-}
-
 nav a:hover {
     cursor: pointer;
     color: #999;
