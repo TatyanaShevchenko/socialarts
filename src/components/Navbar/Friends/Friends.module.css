@@ -29,7 +29,9 @@
     width: 80px;
     overflow: hidden;
 }
-
+.friendBlock:hover{
+    cursor: pointer;
+}
 nav a:hover {
     cursor: pointer;
     color: #999;

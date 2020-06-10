@@ -15,6 +15,13 @@ export const usersAPI = {
             });
     },
 
+    getFriends(isFollowed = true) {
+        return instance.get(`/users?friend=${isFollowed}`)
+            .then(response => {
+                return response.data
+            });
+    },
+
     unfollowUser(userId) {
         return instance.delete(`/follow/${userId}`)
             .then(response => {

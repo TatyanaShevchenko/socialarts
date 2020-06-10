@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./AboutUser.module.css";
+import s from "../../Users/Users.module.css"
 import Loading from "../../common/Loading/Loading";
 import yes from "../../../images/needJobTrue.png";
 import no from "../../../images/needJobFalse.png"
@@ -35,6 +36,7 @@ const AboutUser = (props) => {
                     <p>{props.profile.aboutMe}</p>
                     <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
                 </div>
+
                 <div className={style.stuff}>
                     <div className={style.contacts}>
                         <p className={style.bold}>Я в соц. сетях</p>

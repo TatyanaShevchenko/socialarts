@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import UserPosts from "../UserPosts";
+import UserPosts from "./UserPosts";
 
 
 let mapStateToProps = (state) => {

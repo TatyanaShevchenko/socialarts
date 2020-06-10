@@ -123,11 +123,6 @@ const Users = (props) => {
                             <p className={style.status}>{user.status != null ? user.status : "no status yet :("}</p>
                         </div>
 
-                        {/*<div className={style.location}>*/}
-                        {/*    <p className={style.location__item}>{user.location.city},<br></br>{user.location.country}*/}
-                        {/*    </p>*/}
-                        {/*</div>*/}
-
                         <div className={style.location}>
                             <p className={style.location__item}>City of my Dreams,<br></br>Somewhere in the world
                             </p>
