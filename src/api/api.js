@@ -1,5 +1,6 @@
 import * as axios from "axios";
 
+
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0',
@@ -7,6 +8,22 @@ const instance = axios.create({
         "API-KEY": "c78d3c14-7774-46f3-9218-689064402ee0"
     }
 });
+
+const nytimes = axios.create({
+    withCredentials: true,
+//     baseURL:'https://api.nytimes.com/svc/mostpopular/v2/',
+    headers: {
+        "api-key": "8IjHtVfzGTMx5PDNMkfafG9W33r5yBwG"
+    }
+});
+
+export const NYTimesAPI = {
+    getArticles(period){
+        return nytimes.get(`https://api.nytimes.com/svc/mostpopular/v2/shared/${period}.json`)
+        //return nytimes.get(`/shared/${period}.json?api-key=8IjHtVfzGTMx5PDNMkfafG9W33r5yBwG`)
+    }
+}
+
 export const usersAPI = {
     getUsers(currentPage, pageSize) {
         return instance.get(`/users?page=${currentPage}&count=${pageSize}`)
@@ -15,7 +32,7 @@ export const usersAPI = {
             });
     },
 
-    getFriends(isFollowed = true) {
+    getFriends(isFollowed=true) {
         return instance.get(`/users?friend=${isFollowed}`)
             .then(response => {
                 return response.data

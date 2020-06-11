@@ -4,9 +4,12 @@ import {getUserProfile, getStatus, updateStatus} from "../../redux/profile-reduc
 import {connect} from "react-redux"
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
+import {getFollowInProgress} from "../../selectors/users-selector";
+import {follow, requestFriends, unfollow} from "../../redux/users-reducer";
 
 
 class ProfileContainer extends React.Component {
+
     componentDidMount() {
         let userId = this.props.match.params.userId;
         if (!userId) {
@@ -18,21 +21,33 @@ class ProfileContainer extends React.Component {
         }
         this.props.getUserProfile(userId);
         this.props.getStatus(userId);
+        this.props.requestFriends();
     }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.status !== this.props.status)
         {this.setState({
             status: this.props.status
         });}
+
+        if (prevProps.match.params.userId !== this.props.match.params.userId)
+        {this.setState({
+            profile: this.props.profile
+        });}
     }
 
     render() {
-
         return (
             <Profile {...this.props}
                      profile={this.props.profile}
                      status={this.props.status}
-                     updateStatus={this.props.updateStatus}/>
+                     updateStatus={this.props.updateStatus}
+                     userId = {this.props.match.params.userId}
+                     authorizedUserId={this.props.authorizedUserId}
+                     friends={this.props.friends}
+                     follow={this.props.follow}
+                     unfollow={this.props.unfollow}
+                     followInProgress={this.props.followInProgress}/>
         )
     }
 }
@@ -42,10 +57,19 @@ let mapStateToProps = (state) => ({
     status: state.profilePage.status,
     authorizedUserId: state.auth.userId,
     isAuth:state.auth.isAuth,
+    friends: state.usersPage.friends,
+    followInProgress: getFollowInProgress(state)
 });
 
 export default compose(
-    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
+    connect(mapStateToProps,
+        {getUserProfile,
+            getStatus,
+            updateStatus,
+            follow,
+            unfollow,
+            requestFriends
+        }),
     withRouter,
     // withAuthRedirect
 )

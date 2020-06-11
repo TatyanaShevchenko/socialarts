@@ -1,17 +1,15 @@
 import React from "react";
 import style from './Friends.module.css';
-import {NavLink, Route, withRouter} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import userPhoto from "../../../images/user.png";
-import {compose} from "redux";
 
 
-const Friends = (props) => {
+function Friends(props) {
+    let friendsCount = props.friends.length;
     let friends = props.friends.map(user => {
             if (user.followed) {
                 return (
                     <>
-                        {console.log(user.id)}
-
                         <div className={style.friendBlock}>
                             <NavLink to={'/profile/' + user.id}>
 
@@ -34,7 +32,7 @@ const Friends = (props) => {
 
     return (
         <div>
-            <h3 className={style.title}>Following</h3>
+            <h3 className={style.title}>Following ({friendsCount})</h3>
             <div className={style.wrapper}>
                 <div className={style.friends}>
                     {friends}
@@ -42,7 +40,7 @@ const Friends = (props) => {
             </div>
         </div>
     );
-};
+}
 
 
-export default compose(withRouter)(Friends);
+export default Friends;

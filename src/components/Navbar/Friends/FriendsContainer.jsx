@@ -11,6 +11,13 @@ class FriendsContainer extends React.Component {
         this.props.requestFriends();
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.friends !== this.props.friends) {
+            this.setState({friends: this.props.friends})
+           // this.props.requestFriends();
+        }
+    }
+
     render() {
         return (
             <Friends friends={this.props.friends} requestFriends={this.props.requestFriends}/>
@@ -19,12 +26,10 @@ class FriendsContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-
     return {
         friends: state.usersPage.friends
     }
 };
-
 
 
 export default connect(mapStateToProps, {

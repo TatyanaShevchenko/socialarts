@@ -8,7 +8,7 @@ const UserPosts = React.memo(props => {
     let postsElements =
         [...props.posts]
             .reverse()
-            .map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+            .map(p => <Post deletePost={props.deletePost} message={p.message} likesCount={p.likesCount} postId={p.id}/>)
     // let ReverseFunc = (Elements) => {
     //     const length = Elements.length;
     //     let Reverse = [];

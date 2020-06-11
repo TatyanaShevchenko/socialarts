@@ -43,9 +43,12 @@
 .description {
     margin-top: 85px;
     text-align: center;
+
 }
 
-.description h4 {
+.description h3 {
+    display: inline-block;
+    position: relative;
     margin-bottom: 10px;
 }
 
@@ -55,7 +58,7 @@
 
 .stuff {
     margin: 10px 0;
-    background-color: #f7fdff;
+    background-color: #e4ffd1;
     display: flex;
     justify-content: space-around;
     text-align: left;
@@ -71,4 +74,16 @@
     height: 40px;
     max-width: 260px;
     width: 100%;
+}
+
+.itsYou{
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    right: -80px;
+    color: #ef6523;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 4px;
+    background-color:#ffd8b4;
 }

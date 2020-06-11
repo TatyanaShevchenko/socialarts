@@ -1,6 +1,6 @@
 import {authMeThunkCreator} from "./auth-reducer";
 
-const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS';
+const INITIALIZED_SUCCESS = 'social-arts/app/INITIALIZED-SUCCESS';
 
 let initialState = {
     initialized: false
@@ -20,13 +20,11 @@ const appReducer = (state = initialState, action) => {
 
 export const initializedSuccess = () => ({type:INITIALIZED_SUCCESS});
 
-export const initializeApp = () => (dispatch) =>
+export const initializeApp = () => async (dispatch) =>
 {
    let promise = dispatch(authMeThunkCreator());
-    Promise.all([promise])
-        .then(() => {
-        dispatch(initializedSuccess());
-    })
+    await Promise.all([promise]);
+    dispatch(initializedSuccess());
 }
 
 export default appReducer;

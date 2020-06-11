@@ -16,6 +16,7 @@ import {compose} from "redux";
 
 import Loading from "./components/common/Loading/Loading";
 import {initializeApp} from "./redux/app-reducer";
+import NewsContainer from "./components/News/NewsContainer";
 
 class App extends Component {
     componentDidMount() {
@@ -37,7 +38,7 @@ class App extends Component {
                                    render={() => < ProfileContainer/>}/>
 
                             <Route path="/news"
-                                   render={() => < News/>}/>
+                                   render={() => < NewsContainer/>}/>
                             <Route path="/music"
                                    render={() => < Music/>}/>
                             <Route path="/users"

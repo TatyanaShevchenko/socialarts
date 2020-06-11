@@ -1,18 +1,19 @@
-import { profileAPI } from "../api/api";
+import {profileAPI} from "../api/api";
 
-const ADD_POST = 'ADD-POST';
-const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const SET_STATUS = 'SET-STATUS';
+const ADD_POST = 'social-arts/profile/ADD-POST';
+const DELETE_POST = 'social-arts/profile/DELETE-POST';
+const SET_USER_PROFILE = 'social-arts/profile/SET-USER-PROFILE';
+const SET_STATUS = 'social-arts/profile/SET-STATUS';
 
 
 let initialState = {
     posts: [
-        { id: 1, message: "It's my first post", likesCount: 15 },
-        { id: 2, message: 'Ololo trololo', likesCount: 22 },
-        { id: 3, message: 'Hi! How are you?', likesCount: 35 },
-        { id: 4, message: 'React', likesCount: 100500 },
-        { id: 5, message: 'Ahahahaa', likesCount: 33 },
-        { id: 6, message: "Super message", likesCount: 14 }
+        {id: 1, message: "It's my first post", likesCount: 15},
+        {id: 2, message: 'Ololo trololo', likesCount: 22},
+        {id: 3, message: 'Hi! How are you?', likesCount: 35},
+        {id: 4, message: 'React', likesCount: 100500},
+        {id: 5, message: 'Ahahahaa', likesCount: 33},
+        {id: 6, message: "Super message", likesCount: 14}
     ],
     profile: null,
     status: ""
@@ -30,7 +31,11 @@ const profileReducer = (state = initialState, action) => {
                     likesCount: 0
                 }]
             }
-
+        case DELETE_POST:
+            return {
+                ...state,
+                posts: [...state.posts.filter(p => p.id != action.postId)]
+            }
         case SET_USER_PROFILE:
             return {
                 ...state,
@@ -49,7 +54,8 @@ const profileReducer = (state = initialState, action) => {
 
 //action creators
 
-export const addPost = (newPostBody) => ({ type: ADD_POST, newPostBody:newPostBody });
+export const addPost = (newPostBody) => ({type: ADD_POST, newPostBody: newPostBody});
+export const deletePost = (postId) => ({type: DELETE_POST, postId});
 export const setUserProfile = (profile) => ({
     type: SET_USER_PROFILE,
     profile: profile
@@ -62,31 +68,25 @@ export const setStatus = (status) => ({
 //thunk creators
 
 export const getUserProfile = (userId) => {
-    return (dispatch) => {
-        profileAPI.getUserProfile(userId)
-            .then(data => {
-                dispatch(setUserProfile(data));
-            })
+    return async (dispatch) => {
+        let data = await profileAPI.getUserProfile(userId);
+        dispatch(setUserProfile(data));
     }
 }
 
 export const getStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId)
-            .then(response => {
-                dispatch(setStatus(response.data));
-            })
+    return async (dispatch) => {
+        let response = await profileAPI.getStatus(userId);
+        dispatch(setStatus(response.data));
     }
 }
 
 export const updateStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setStatus(status));
-                }
-            })
+    return async (dispatch) => {
+        let response = await profileAPI.updateStatus(status)
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
     }
 }
 
