@@ -1,0 +1,20 @@
+.pagesList {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: #ffd8b4;
+}
+
+.pagesList li:hover {
+    cursor: pointer;
+    color: #999999;
+}
+
+.pagesList li {
+    margin-right: 5px;
+}
+
+.selectedPage {
+    font-weight: 700;
+    color: #cf5214;
+}

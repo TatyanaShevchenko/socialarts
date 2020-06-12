@@ -7,13 +7,11 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
 import NavbarContainer from "./components/Navbar/NavbarContainer"
-import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import Footer from "./components/Footer/Footer";
 import {connect} from "react-redux";
 import {compose} from "redux";
-
 import Loading from "./components/common/Loading/Loading";
 import {initializeApp} from "./redux/app-reducer";
 import NewsContainer from "./components/News/NewsContainer";

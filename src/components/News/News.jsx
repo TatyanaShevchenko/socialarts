@@ -20,7 +20,10 @@ const News = (props) => {
                         <div className={style.articleImg}>
                             <p>{article.media.map(image =>
                                 <div>
-                                    <img alt={image.caption} src={image['media-metadata'][1].url}></img>
+                                    <a href={article.url}
+                                       target="_blank">
+                                        <img alt={image.caption} src={image['media-metadata'][1].url}></img>
+                                    </a>
                                 </div>)}
                             </p>
                         </div>

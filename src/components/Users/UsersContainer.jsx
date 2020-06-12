@@ -36,7 +36,9 @@ class UsersContainer extends React.Component {
     render() {
         return (
             <>
-                {this.props.isFetching ? <Loading/> : <Users totalUsersCount={this.props.totalUsersCount}
+                {this.props.isFetching
+                    ? <Loading/>
+                    : <Users totalUsersCount={this.props.totalUsersCount}
                                                              pageSize={this.props.pageSize}
                                                              currentPage={this.props.currentPage}
                                                              onPageChanged={this.onPageChanged}

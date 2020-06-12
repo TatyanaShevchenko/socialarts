@@ -1,0 +1,27 @@
+p, a{
+    padding: 0;
+    margin: 0;
+}
+.dialog {
+    display: flex;
+    height: 60px;
+    max-width: 200px;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-right: 20px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+
+.dialogPhoto {
+    width: 40px !important;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dialogName {
+    font-size: 16px;
+}

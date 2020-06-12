@@ -36,6 +36,4 @@ export const requestArticles = () => {
 }
 
 
-
-
 export default newsReducer;
