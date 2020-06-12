@@ -2,12 +2,14 @@ import React, {Component} from "react";
 import News from "./News";
 import {connect} from "react-redux";
 import {requestArticles} from "../../redux/news-reducer";
+import {executeJS} from "../../api/api";
 
 
 class NewsContainer extends Component {
 
     componentDidMount() {
-        this.props.requestArticles(1);
+        this.props.requestArticles();
+
     }
 
     render() {
@@ -26,5 +28,8 @@ let mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps, {requestArticles})(NewsContainer);
+export default connect(mapStateToProps,
+     {requestArticles}
+    )
+(NewsContainer);
 

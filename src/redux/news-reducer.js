@@ -1,4 +1,4 @@
-import {NYTimesAPI} from "../api/api";
+import {executeJS} from "../api/api";
 
 const SET_ARTICLES = 'social-arts/news/SET-ARTICLES';
 const SET_TOTAL_ARTICLES_COUNT = 'social-arts/news/SET-TOTAL-ARTICLES-COUNT';
@@ -27,13 +27,14 @@ const newsReducer = (state = initialState, action) => {
 export const setArticles = (articles) => ({type: SET_ARTICLES, articles});
 export const setTotalArticlesCount = (totalArticlesCount) => ({type: SET_TOTAL_ARTICLES_COUNT, count: totalArticlesCount});
 
-export const requestArticles = (period) => {
+export const requestArticles = () => {
     return async (dispatch) => {
-        let data = await NYTimesAPI.getArticles(period);
+        const data = await executeJS();
         dispatch(setArticles(data.results));
         dispatch(setTotalArticlesCount(data.num_results));
     }
 }
+
 
 
 

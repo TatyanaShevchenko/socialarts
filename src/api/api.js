@@ -1,5 +1,5 @@
 import * as axios from "axios";
-
+const request = require('request');
 
 const instance = axios.create({
     withCredentials: true,
@@ -13,16 +13,27 @@ const nytimes = axios.create({
     withCredentials: true,
 //     baseURL:'https://api.nytimes.com/svc/mostpopular/v2/',
     headers: {
-        "api-key": "8IjHtVfzGTMx5PDNMkfafG9W33r5yBwG"
+        "api-key": "8IjHtVfzGTMx5PDNMkfafG9W33r5yBwG",
+        "secret":"Ee7ouPLHATC2qLuM",
+        "Accept": "application/json"
     }
 });
 
-export const NYTimesAPI = {
-    getArticles(period){
-        return nytimes.get(`https://api.nytimes.com/svc/mostpopular/v2/shared/${period}.json`)
-        //return nytimes.get(`/shared/${period}.json?api-key=8IjHtVfzGTMx5PDNMkfafG9W33r5yBwG`)
-    }
+
+export  const executeJS = async()=> {
+    const url = "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=8IjHtVfzGTMx5PDNMkfafG9W33r5yBwG";
+    const options = {
+        method: "GET",
+        headers: {
+            "Accept": "application/json"
+        },
+    };
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data;
 }
+
+
 
 export const usersAPI = {
     getUsers(currentPage, pageSize) {

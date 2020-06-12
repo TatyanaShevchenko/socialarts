@@ -13,6 +13,7 @@
     "redux": "^4.0.1",
     "redux-form": "^8.2.4",
     "redux-thunk": "^2.3.0",
+    "request": "^2.88.2",
     "reselect": "^4.0.0"
   },
   "scripts": {
@@ -35,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "request": "latest"
   }
 }

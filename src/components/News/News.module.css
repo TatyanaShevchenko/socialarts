@@ -1,0 +1,47 @@
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+p + p {
+    margin-top: 10px;
+}
+
+.newsWrapper {
+    padding: 10px;
+}
+
+.articles {
+
+}
+
+.article {
+    display: flex;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #fcfcfc;
+    border: 1px solid #999999;
+}
+.articleImg{
+    margin-right: 15px;
+}
+.articleTitle{
+    padding-bottom: 5px;
+    border-bottom: 1px solid #999999;
+    margin-bottom: 5px;
+}
+.articleTitle a:hover{
+    color: #ef6523;
+}
+.source, .publishedDate {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.sourceLink {
+    cursor: pointer;
+}
+
+.sourceLink:hover {
+    color: #cf5214;
+}
