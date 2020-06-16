@@ -8,6 +8,13 @@ const instance = axios.create({
     }
 });
 
+const music = axios.create({
+    baseURL: 'https://deezerdevs-deezer.p.rapidapi.com',
+    headers: {
+        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+        "x-rapidapi-key": "2abf5dd724msh6dde583f1c5bf94p11365ajsnc0bb242cba25"
+    }
+});
 
 export  const executeJS = async()=> {
      const url = "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=8IjHtVfzGTMx5PDNMkfafG9W33r5yBwG";
@@ -22,6 +29,15 @@ export  const executeJS = async()=> {
     return data;
 }
 
+
+export const musicAPI =
+    { getSongsByArtist(artist) {
+           return music.get(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`)
+               .then(response => {
+                   return response.data
+               });
+        }
+    }
 
 
 export const usersAPI = {

@@ -1,19 +1,49 @@
+.paginator{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .pagesList {
     padding: 20px;
     display: flex;
     justify-content: center;
     background-color: #ffd8b4;
 }
-
-.pagesList li:hover {
+span{
+    margin: 5px;
+}
+span:hover{
     cursor: pointer;
-    color: #999999;
+    color: #cf5214;
+}
+.paginationBtn{
+    height: 30px;
+    width: 30px;
+    border: 2px solid #4c8d21;
+    color: #fff;
+    background-color: #5fb626;
+    font-size: 12px;
+}
+.nextBtn,
+.prevBtn{
+    position: relative;
 }
 
-.pagesList li {
-    margin-right: 5px;
+.nextBtn::before{
+    content: '\f054';
+    font-family: 'icomoon' !important;
+    position: absolute;
+    top: 7px;
+    left: 9px;
 }
-
+.prevBtn::before{
+    content: '\f053';
+    font-family: 'icomoon' !important;
+    position: absolute;
+    top: 7px;
+    left: 9px;
+}
 .selectedPage {
     font-weight: 700;
     color: #cf5214;

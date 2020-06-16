@@ -1,95 +1,37 @@
-import React from "react";
+import React, {useState} from "react";
 import style from "./Pagination.module.css";
 
 
-const Pagination = ({totalUsersCount,pageSize,onPageChanged,currentPage}) => {
-    let pagesCount = Math.ceil(totalUsersCount/pageSize);
+const Pagination = ({totalItemsCount, pageSize, onPageChanged, currentPage, portionSize = 10}) => {
+    let pagesCount = Math.ceil(totalItemsCount / pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-    let pagination = () => {
-        const pagesJSX = pages.map(page => {
-            return <li className={currentPage === page && style.selectedPage} onClick={(e) => {
-                onPageChanged(page)
-            }}>{page}</li>
-        });
-        let currentPageIndex = currentPage - 1;
 
-        if (currentPageIndex === 0) {
-            return (
+    let portionsCount = Math.ceil(pagesCount / portionSize);
+    let [portionNumber, setPortionNumber] = useState(1);
 
-                <ul className={style.pagesList}>
-                    <li>{pagesJSX[0]}</li>
-                    <li>{pagesJSX[currentPageIndex + 1]}</li>
-                    <li>{pagesJSX[currentPageIndex + 2]}</li>
-                    <li>{pagesJSX[currentPageIndex + 3]}</li>
-                    <li>...</li>
-                    <li>{pagesJSX[pagesCount - 1]}</li>
-                </ul>
-            )
-        } else if (currentPageIndex === 1) {
-            return (<ul className={style.pagesList}>
-                <li>{pagesJSX[0]}</li>
-                <li>{pagesJSX[currentPageIndex]}</li>
-                <li>{pagesJSX[currentPageIndex + 1]}</li>
-                <li>{pagesJSX[currentPageIndex + 2]}</li>
-                <li>...</li>
-                <li>{pagesJSX[pagesCount - 1]}</li>
-            </ul>)
-        } else if (currentPageIndex === 2) {
-            return (<ul className={style.pagesList}>
-                <li>{pagesJSX[0]}</li>
-                <li>{pagesJSX[currentPageIndex - 1]}</li>
-                <li>{pagesJSX[currentPageIndex]}</li>
-                <li>{pagesJSX[currentPageIndex + 1]}</li>
-                <li>...</li>
-                <li>{pagesJSX[pagesCount - 1]}</li>
-            </ul>)
-        } else if (currentPageIndex === pagesCount - 1) {
-            return (<ul className={style.pagesList}>
-                <li>{pagesJSX[0]}</li>
-                <li>...</li>
-                <li>{pagesJSX[currentPageIndex - 3]}</li>
-                <li>{pagesJSX[currentPageIndex - 2]}</li>
-                <li>{pagesJSX[currentPageIndex - 1]}</li>
-                <li>{pagesJSX[pagesCount - 1]}</li>
-            </ul>)
-        } else if (currentPageIndex === pagesCount - 2) {
-            return (<ul className={style.pagesList}>
-                <li>{pagesJSX[0]}</li>
-                <li>...</li>
-                <li>{pagesJSX[currentPageIndex - 2]}</li>
-                <li>{pagesJSX[currentPageIndex - 1]}</li>
-                <li>{pagesJSX[currentPageIndex]}</li>
-                <li>{pagesJSX[pagesCount - 1]}</li>
-            </ul>)
-        } else if (currentPageIndex === pagesCount - 3) {
-            return (<ul className={style.pagesList}>
-                <li>{pagesJSX[0]}</li>
-                <li>...</li>
-                <li>{pagesJSX[currentPageIndex - 1]}</li>
-                <li>{pagesJSX[currentPageIndex]}</li>
-                <li>{pagesJSX[currentPageIndex + 1]}</li>
-                <li>{pagesJSX[pagesCount - 1]}</li>
-            </ul>)
-        } else return (
-            <ul className={style.pagesList}>
-                <li>{pagesJSX[0]}</li>
-                <li>...</li>
-                <li>{pagesJSX[currentPageIndex - 1]}</li>
-                <li> {pagesJSX[currentPageIndex]}</li>
-                <li>{pagesJSX[currentPageIndex + 1]}</li>
-                <li>...</li>
-                <li>{pagesJSX[pagesCount - 1]}</li>
-            </ul>
-        )
-
-    }
+    let leftPortionEdge = (portionNumber - 1) * portionSize + 1;
+    let rightPortionEdge = portionNumber * portionSize;
 
     return (
-        <div>
-            {pagination()}
+        <div className={style.paginator}>
+            {portionNumber >1 &&
+            <button className={style.paginationBtn +' '+style.prevBtn}
+                onClick={()=>{setPortionNumber(portionNumber -1) }}></button>
+            }
+            {pages
+                .filter(page => page >=leftPortionEdge && page <=rightPortionEdge )
+                .map(page => {
+                return <span className={currentPage===page && style.selectedPage}
+                             onClick={(e) => {
+                                 onPageChanged(page);}}>{page}</span>
+            })}
+            {portionsCount > portionNumber &&
+            <button className={style.paginationBtn+' '+style.nextBtn}
+                onClick={()=>{setPortionNumber(portionNumber +1)}}></button>
+            }
         </div>
     )
 }

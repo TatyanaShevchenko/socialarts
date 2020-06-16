@@ -5,6 +5,8 @@
     margin-bottom: 15px;
 }
 .divStyleInput{
+    display: flex;
+    justify-content: center;
     position: relative;
     margin-bottom: 15px;
 }

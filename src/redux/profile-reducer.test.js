@@ -24,35 +24,19 @@ it('count of posts should be incremented', () => {
 });
 
 it('message of new post should be correct', () => {
-    // 1. test data
     let action = addPost("Tanya learns front-end");
-
-    // 2. action
     let newState = profileReducer(state, action);
-
-    // 3. expectations
-
     expect (newState.posts[6].message).toBe("Tanya learns front-end");
 });
 
 it('after deleting  posts count should be decremented', () => {
-    // 1. test data
     let action = deletePost(1);
-
-    // 2. action
     let newState = profileReducer(state, action);
-
-    // 3. expectations
     expect (newState.posts.length).toBe(5);
 });
 
 it(`after deleting  posts count shouldn't be decremented if postId is incorrect`, () => {
-    // 1. test data
     let action = deletePost(10);
-
-    // 2. action
     let newState = profileReducer(state, action);
-
-    // 3. expectations
     expect (newState.posts.length).toBe(6);
 });

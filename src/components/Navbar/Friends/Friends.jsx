@@ -1,7 +1,7 @@
 import React from "react";
 import style from './Friends.module.css';
-import {NavLink} from "react-router-dom";
-import userPhoto from "../../../images/user.png";
+import {NavLink, Route} from "react-router-dom";
+import Friend from "./Friend";
 
 
 function Friends(props) {
@@ -9,21 +9,9 @@ function Friends(props) {
     let friends = props.friends.map(user => {
             if (user.followed) {
                 return (
-                    <>
-                        <div className={style.friendBlock}>
-                            <NavLink to={'/profile/' + user.id}>
-
-                                <img className={style.friendPhoto}
-                                     src={user.photos.small != null ? user.photos.small : userPhoto} alt="">
-
-                                </img>
-                                <p className={style.friendName}>{user.name}</p>
-
-                            </NavLink>
-                        </div>
-
-
-                    </>
+                    <NavLink exact to={'/profile/' + user.id}>
+                         <Friend user={user}/>
+                    </NavLink>
                 )
             }
         }

@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Profile.module.css";
 import AboutUser from "./AboutUser/AboutUser";
 import UserPostsContainer from "./MyPosts/UserPostsContainer";
-import Users from "../Users/Users";
+
 
 
 

@@ -6,6 +6,7 @@ import {Textarea} from "../../../common/FormsControls/FormsControls";
 
 
 const maxLength15 = maxLengthCreator(15)
+
 const AddNewPostForm = (props) => {
     return (
     <form onSubmit={props.handleSubmit} className={style.AddNewPost}>
