@@ -14,7 +14,7 @@
 }
 
 .header__icon {
-    background-color: #ff7400;
+    background-color: #3f51b5;
     display: inline-block;
     width: 36px;
     height: 36px;
@@ -29,28 +29,27 @@
     color: #fff;
 }
 
-.header span {
-    color: #ff7400;
+.logotype {
+    color: #3f51b5;
     font-weight: 700;
 }
 .loginBlock{
     display: flex;
     align-items: center;
+    color: #fff;
 }
-.loginP{
+p.loginP{
     color: #fff;
     text-decoration: underline;
+    margin-right: 15px;
 }
 
-.loginP:hover{
-    color: #ff7400;
+p.loginP:hover{
+    color: #3f51b5;
     cursor: pointer;
 }
 .header__title {
     font-size: 36px;
     display: inline-block;
-    margin-left: 15px;
-}
-.logoutBtn{
     margin-left: 15px;
 }

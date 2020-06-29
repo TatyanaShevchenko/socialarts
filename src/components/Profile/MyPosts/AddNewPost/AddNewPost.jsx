@@ -3,6 +3,7 @@ import style from "./AddNewPost.module.css";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, requiredField} from "../../../../utils/validators/validators";
 import {Textarea} from "../../../common/FormsControls/FormsControls";
+import Button from '@material-ui/core/Button';
 
 
 const maxLength15 = maxLengthCreator(15)
@@ -16,7 +17,9 @@ const AddNewPostForm = (props) => {
             component={Textarea}
             validate={[requiredField, maxLength15]}
         />
-        <button className={style.btn}>Add post</button>
+        <Button type="submit" variant="contained" color="primary">
+            Add post
+        </Button>
     </form>
 )
 }

@@ -1,9 +1,7 @@
-import React, {Component} from 'react';
+import React, {Component, Suspense} from 'react';
 import './App.css';
 import {BrowserRouter, Route, withRouter} from "react-router-dom";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
 import NavbarContainer from "./components/Navbar/NavbarContainer"
@@ -13,10 +11,14 @@ import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import Loading from "./components/common/Loading/Loading";
 import {initializeApp} from "./redux/app-reducer";
-import NewsContainer from "./components/News/NewsContainer";
-import MusicContainer from "./components/Music/MusicContainer";
 import store from "./redux/redux-store";
 import Welcome from "./components/Welcome/Welcome";
+import {withSuspense} from "./hoc/withSuspense";
+
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+const NewsContainer = React.lazy(() => import('./components/News/NewsContainer'));
+const MusicContainer = React.lazy(() => import('./components/Music/MusicContainer'));
 
 class App extends Component {
     componentDidMount() {
@@ -35,16 +37,15 @@ class App extends Component {
                         <NavbarContainer/>
                         <div className="grid__container-content">
                             <Route exact path="/"
-                                   render={() => <Welcome />}/>
+                                   render={() => <Welcome/>}/>
                             <Route path="/dialogs"
-                                   render={() => < DialogsContainer/>}/>
+                                   render={withSuspense(DialogsContainer)}/>
                             <Route path="/profile/:userId?"
-                                   render={() => < ProfileContainer/>}/>
-
+                                   render={withSuspense(ProfileContainer)}/>
                             <Route path="/news"
-                                   render={() => < NewsContainer/>}/>
+                                   render={withSuspense(NewsContainer)}/>
                             <Route path="/music"
-                                   render={() => < MusicContainer/>}/>
+                                   render={withSuspense(MusicContainer)}/>
                             <Route path="/users"
                                    render={() => < UsersContainer/>}/>
                             <Route path="/settings"

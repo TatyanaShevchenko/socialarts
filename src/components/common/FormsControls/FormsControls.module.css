@@ -28,17 +28,6 @@ input{
     color: #999999;
     height: 100%;
 }
-button {
-    width: 100px;
-    height: 40px;
-    border: 2px solid #ef6523;
-    color: #fff;
-    background-color: #ff7400;
-}
-button:hover {
-    border: 2px solid #cf5214;
-    background-color: #ef6523;
-}
 .redText{
     color: #cc0b0b;
 }

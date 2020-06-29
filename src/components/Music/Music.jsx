@@ -4,6 +4,7 @@ import {Field, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
 import {requiredField} from "../../utils/validators/validators";
 import style from "./Music.module.css";
+import Button from '@material-ui/core/Button';
 
 
 
@@ -17,7 +18,8 @@ const SongArtist = (props) => {
                 component={Input}
                 validate={requiredField}
             />
-            <button className={style.btn}>Get songs</button>
+            <Button variant="contained" color="primary" type="submit"
+                className={style.btn}>Get songs</Button>
         </form>
     )
 }

@@ -25,12 +25,12 @@
 }
 .avatar {
     position: absolute;
-    background-color: #ffd8b4;
+    background-color: #e2e7ff;
     top: -75px;
     left: calc(100% / 2 - 75px);
     width: 150px !important;
     height: 150px;
-    border: 3px solid #ef6523;
+    border: 3px solid #3f51b5;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -59,7 +59,7 @@
 .stuff {
     margin: 10px 0;
     padding: 10px;
-    background-color: #e4ffd1;
+    background-color: #e2e7ff;
     display: flex;
     justify-content: space-around;
     text-align: left;
@@ -82,9 +82,9 @@
     position: absolute;
     top: 0;
     right: -80px;
-    color: #ef6523;
+    color: #3f51b5;
     display: inline-block;
     padding: 5px 15px;
     border-radius: 4px;
-    background-color:#ffd8b4;
+    background-color:#e2e7ff;
 }

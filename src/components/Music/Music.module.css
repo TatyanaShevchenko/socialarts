@@ -8,8 +8,9 @@
 .songBox{
     text-align: left;
     padding: 10px 15px;
-    margin: 5px ;
-    border: 1px solid #999999;
+    margin: 15px 0;
+    border-radius: 4px;
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.16), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
     min-height: 76px;
 }
 .searchByArtistForm{
@@ -25,20 +26,14 @@
 }
 .btn {
     margin: 0 auto;
-    background-color: #72d62f;
-    border: 2px solid #5fb626;
 }
 
-.btn:hover {
-    background-color: #5fb626;
-    border: 2px solid #4c8d21;
-}
 .link{
     cursor: pointer;
     text-decoration: underline;
 }
 .link:hover{
-    color: #cf5214;
+    color: #3f51b5;
 }
 .image{
     float: left;

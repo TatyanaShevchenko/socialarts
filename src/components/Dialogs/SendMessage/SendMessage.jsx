@@ -3,7 +3,7 @@ import style from "./SendMessage.module.css";
 import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../../common/FormsControls/FormsControls";
 import {maxLengthCreator, requiredField} from "../../../utils/validators/validators";
-
+import Button from '@material-ui/core/Button';
 
 const maxLength50 = maxLengthCreator(50);
 const SendMessageForm = (props) => {
@@ -13,7 +13,8 @@ const SendMessageForm = (props) => {
                    name="newMessageBody"
                    component={Textarea}
                    validate={[requiredField, maxLength50]}/>
-            <button className={style.btn}>Send</button>
+            <Button type="submit" variant="contained" color="primary"
+                className={style.btn}>Send</Button>
         </form>
     )
 }

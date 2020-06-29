@@ -39,13 +39,3 @@ h1 {
     height: 10px;
 }
 
-.btn {
-    margin: 0 auto;
-    background-color: #72d62f;
-    border: 2px solid #5fb626;
-}
-
-.btn:hover {
-    background-color: #5fb626;
-    border: 2px solid #4c8d21;
-}

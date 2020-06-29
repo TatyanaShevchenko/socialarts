@@ -5,6 +5,7 @@ import Loading from "../../common/Loading/Loading";
 import yes from "../../../images/needJobTrue.png";
 import no from "../../../images/needJobFalse.png"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import Button from '@material-ui/core/Button';
 
 
 function AboutUser(props) {
@@ -49,34 +50,34 @@ function AboutUser(props) {
         const funcFollowBtn = (user) => {
             if (!!user) {
                 if (user.followed) {
-                    return (<button
+                    return (<Button variant="contained" color="secondary"
                         //disabled={props.followInProgress}
                         className={styleBtn.unfollow}
                         onClick={() => {
                             props.unfollow(userId);
                         }}>
                         Unfollow
-                    </button>)
+                    </Button>)
                 } else {
                     return (
-                        <button
+                        <Button variant="contained" color="primary"
                             //disabled={props.followInProgress}
                             onClick={() => {
                                 props.follow(userId);
                             }}>
                             Follow
-                        </button>
+                        </Button>
                     )
                 }
             } else if (userId !== props.authorizedUserId){
                 return (
-                    <button
+                    <Button variant="contained" color="primary"
                         //disabled={props.followInProgress.some(id => id === user.id)}
                         onClick={() => {
                             props.follow(userId);
                         }}>
                         Follow
-                    </button>)
+                    </Button>)
             }
         }
 

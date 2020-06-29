@@ -50,14 +50,8 @@
 .deletePost{
     display: none;
      margin: 10px;
-     color: #4c8d21;
-     border: 1px solid #4c8d21;
-     background-color: #e4ffd1;
  }
 
 .deletePost:hover{
     transition: all .5s;
-    color: #fff;
-    border: 1px solid #ac0000;
-    background-color: #cc0b0b;
 }

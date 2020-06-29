@@ -3,7 +3,7 @@ import style from "./Users.module.css";
 import userPhoto from "../../images/user.png";
 import {NavLink} from "react-router-dom";
 import Pagination from "../common/Pagination/Pagination";
-
+import Button from '@material-ui/core/Button';
 
 const User = ({user, followInProgress, unfollow, follow}) => {
 
@@ -18,20 +18,22 @@ const User = ({user, followInProgress, unfollow, follow}) => {
                 </div>
                 <div className={style.btn}>
                     {user.followed
-                        ? <button disabled={followInProgress.some(id => id === user.id)}
+                        ? <Button variant="contained" color="secondary"
+                            disabled={followInProgress.some(id => id === user.id)}
                                   className={style.unfollow}
                                   onClick={() => {
                                       unfollow(user.id);
                                   }}>
                             Unfollow
-                        </button>
+                        </Button>
 
-                        : <button disabled={followInProgress.some(id => id === user.id)}
+                        : <Button variant="contained" color="primary"
+                            disabled={followInProgress.some(id => id === user.id)}
                                   onClick={() => {
                                       follow(user.id);
                                   }}>
                             Follow
-                        </button>
+                        </Button>
                     }
                 </div>
             </div>

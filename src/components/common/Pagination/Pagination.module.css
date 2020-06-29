@@ -1,28 +1,24 @@
 .paginator{
-    margin-top: 10px;
     display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 10px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 .pagesList {
     padding: 20px;
     display: flex;
     justify-content: center;
-    background-color: #ffd8b4;
+    background-color: #e2e7ff;
 }
-span{
-    margin: 5px;
-}
+
 span:hover{
     cursor: pointer;
-    color: #cf5214;
+
 }
 .paginationBtn{
     height: 30px;
-    width: 30px;
-    border: 2px solid #4c8d21;
-    color: #fff;
-    background-color: #5fb626;
     font-size: 12px;
 }
 .nextBtn,
@@ -34,17 +30,17 @@ span:hover{
     content: '\f054';
     font-family: 'icomoon' !important;
     position: absolute;
-    top: 7px;
-    left: 9px;
+    top: 5px;
+    left: 27px;
 }
 .prevBtn::before{
     content: '\f053';
     font-family: 'icomoon' !important;
     position: absolute;
-    top: 7px;
-    left: 9px;
+    top: 5px;
+    left: 27px;
 }
 .selectedPage {
     font-weight: 700;
-    color: #cf5214;
+    color: #3f51b5;
 }

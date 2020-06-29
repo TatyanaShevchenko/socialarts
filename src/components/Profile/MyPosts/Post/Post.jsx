@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Post.module.css";
+import Button from '@material-ui/core/Button';
 
 const Post = (props) => {
     const deletePost = (postId) => {
@@ -13,7 +14,8 @@ const Post = (props) => {
                 <div className={style.text}>{props.message}</div>
                 <div className={style.likes}><span> {props.likesCount}</span></div>
             </div>
-            <button onClick={deletePost} className={style.deletePost}>Delete post</button>
+            <Button variant="contained" color="secondary"
+                onClick={deletePost} className={style.deletePost}>Delete post</Button>
         </div>
     );
 };

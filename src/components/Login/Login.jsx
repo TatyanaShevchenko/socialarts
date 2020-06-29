@@ -7,6 +7,7 @@ import {requiredField} from "../../utils/validators/validators";
 import {connect} from "react-redux";
 import {loginThunkCreator} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
+import Button from '@material-ui/core/Button';
 
 
 
@@ -35,7 +36,7 @@ let LoginForm = (props) => {
                 remember me
             </div>
             {props.error ? <div className={formStyle.divError}>{props.error}</div> : ""}
-            <button className={style.btn}>Login</button>
+            <Button type="submit" variant="contained" color="primary">Login</Button>
         </form>
     )
 }
