@@ -70,6 +70,7 @@
     justify-content: space-around;
     text-align: left;
     font-size: 14px;
+    position: relative;
 }
 .status{
     margin: 10px;
@@ -98,4 +99,21 @@
 .editButton{
     text-align: left;
     margin-left: 15px;
+}
+.stuffBtn{
+position: absolute;
+    left: 15px;
+}
+.stuffBtnDown{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+.checkbox {
+    padding: 0px;
+    height: 10px;
+}
+.input {
+    padding: 10px 40px;
+    border: none;
 }

@@ -10,7 +10,9 @@ const Profile = (props) => {
     let [editMode, setEditMode] = useState(false);
     return (
         <div className={style.profile}>
-           <AboutUser profile={props.profile}
+           <AboutUser
+               saveProfile={props.saveProfile}
+               profile={props.profile}
                              status={props.status}
                              updateStatus={props.updateStatus}
                              friends={props.friends}

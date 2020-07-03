@@ -2,13 +2,12 @@ import React, {useState} from "react";
 import style from "./AboutUser.module.css";
 import styleBtn from "../../Users/Users.module.css"
 import Loading from "../../common/Loading/Loading";
-import yes from "../../../images/needJobTrue.png";
-import no from "../../../images/needJobFalse.png"
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import Button from '@material-ui/core/Button';
+import UserProfile from "./UserStaff/Stuff";
+import UserProfileReduxForm from "./UserStaff/StuffForm";
 
 
-function AboutUser(props) {
+function AboutUser({saveProfile, ...props}) {
     let [editMode, setEditMode] = useState(false);
     if (!props.profile) {
         return <Loading/>
@@ -20,15 +19,18 @@ function AboutUser(props) {
         } else {
             userId = props.authorizedUserId;
         }
-        const itIsYou = (userId) => {
+        const isItYou = (userId) => {
             if (userId === props.authorizedUserId) {
                 return true;
+            } else {
+                return false;
             }
         }
 
         let friends = props.friends;
         const userArray = friends.filter(friend => friend.id == userId);
         let user;
+        const itIsYou = isItYou(userId);
         if (userArray.length !== 0) {
             user = userArray[0];
         }
@@ -63,85 +65,55 @@ function AboutUser(props) {
                     </Button>)
             }
         }
-
+        const submit = (formData) => {
+            saveProfile(formData);
+            setEditMode(false);
+        }
 
         return (
-            <div className={style.aboutMe}>
-                <div className={style.background}>
-                    <img
-                        src="https://jssors8.azureedge.net/demos/image-slider/img/faded-monaco-scenery-evening-dark-picjumbo-com-image.jpg"
-                        alt="background"/>
-                </div>
-                <div className={style.myInfo}>
-                    <img className={style.avatar}
-                         src={props.profile.photos.large}></img>
-                    <div className={style.description}>
-                        <h3>{props.profile.fullName}</h3>
-                        {itIsYou(userId)
-                            ? <p className={style.itsYou}>It's you</p>
-
-                            : null}
-                        <p>{props.profile.aboutMe}</p>
-                        <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
-                    </div>
-
-                    <div className={styleBtn.btn}>
-                        {funcFollowBtn(user)}
-                    </div>
-                    {itIsYou(userId) ?
-                        <Button variant="contained" color="primary"
-                                onClick={() => setEditMode(true)}>edit</Button>
-                        : null}
-
-                    {editMode
-                        ? <StuffEdit/>
-                        : <Stuff contacts={props.profile.contacts}
-                                 lookingForAJobDescription={props.profile.lookingForAJobDescription}
-                                 lookingForAJob={props.profile.lookingForAJob}/>}
-
-
-                </div>
-            </div>
+            <>
+                {editMode
+                    ? <UserProfileReduxForm
+                        onSubmit={submit}
+                        itIsYou={itIsYou}
+                        user={user}
+                        funcFollowBtn={funcFollowBtn}
+                        saveProfile={props.saveProfile}
+                        profile={props.profile}
+                        status={props.status}
+                        updateStatus={props.updateStatus}
+                        friends={props.friends}
+                        userId={props.userId}
+                        authorizedUserId={props.authorizedUserId}
+                        follow={props.follow}
+                        unfollow={props.unfollow}
+                        followInProgress={props.followInProgress}
+                        savePhoto={props.savePhoto}
+                        goToEditMode={() => setEditMode(true)}
+                        setEditMode={setEditMode}
+                        contacts={props.profile.contacts}
+                        lookingForAJobDescription={props.profile.lookingForAJobDescription}
+                    />
+                    : <UserProfile itIsYou={itIsYou}
+                                   user={user}
+                                   funcFollowBtn={funcFollowBtn}
+                                   saveProfile={props.saveProfile}
+                                   profile={props.profile}
+                                   status={props.status}
+                                   updateStatus={props.updateStatus}
+                                   friends={props.friends}
+                                   userId={props.userId}
+                                   authorizedUserId={props.authorizedUserId}
+                                   follow={props.follow}
+                                   unfollow={props.unfollow}
+                                   followInProgress={props.followInProgress}
+                                   savePhoto={props.savePhoto}
+                                   goToEditMode={() => setEditMode(true)}
+                                   setEditMode={setEditMode}/>}
+            </>
         );
     }
 }
-const StuffEdit =({contacts, lookingForAJobDescription, lookingForAJob})=>{
-    return (
-        <div>StuffEdit</div>
-    )
-}
-const Stuff = ({contacts, lookingForAJobDescription, lookingForAJob, ...props}) => {
-    const funcNeedJob = (needAJob) => {
-        if (needAJob) {
-            return (
-                <img className={style.needJobPic} src={yes}></img>
-            )
-        } else {
-            return (
-                <img className={style.needJobPic} src={no}></img>
-            )
-        }
-    }
-    return (
-        <div className={style.stuff}>
-            <div className={style.contacts}>
-                <p className={style.bold}>Я в соц. сетях</p>
-                {Object.keys(contacts).map(key => {
-                    return <Contact key={key} contactTitle={key} contactLink={contacts[key]}/>
-                })}
 
-            </div>
-            <div className={style.needJob}>
-                <div className={style.flex}>
-                    <p className={style.findAJob}>Ищу работу</p>
-                    {funcNeedJob(lookingForAJob)}
-                </div>
-                <p>{lookingForAJobDescription}</p>
-            </div>
-        </div>
-    )
-}
-const Contact = ({contactTitle, contactLink}) => {
-    return <div><b>{contactTitle}</b>: {contactLink}</div>
-}
+
 export default AboutUser;
