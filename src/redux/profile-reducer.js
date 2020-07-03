@@ -4,6 +4,7 @@ const ADD_POST = 'social-arts/profile/ADD-POST';
 const DELETE_POST = 'social-arts/profile/DELETE-POST';
 const SET_USER_PROFILE = 'social-arts/profile/SET-USER-PROFILE';
 const SET_STATUS = 'social-arts/profile/SET-STATUS';
+const SAVE_PHOTO_SUCCESS ='social-arts/profile/SAVE-PHOTO-SUCCESS';
 
 
 let initialState = {
@@ -46,6 +47,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status
             }
+        case SAVE_PHOTO_SUCCESS:
+            return {
+                ...state,
+                profile: {...state.profile, photos:action.photos}
+            }
 
         default:
             return state;
@@ -64,6 +70,7 @@ export const setStatus = (status) => ({
     type: SET_STATUS,
     status: status
 });
+export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos});
 
 //thunk creators
 
@@ -78,6 +85,15 @@ export const getStatus = (userId) => {
     return async (dispatch) => {
         let response = await profileAPI.getStatus(userId);
         dispatch(setStatus(response.data));
+    }
+}
+
+export const savePhoto = (file) => {
+    return async (dispatch) => {
+        let response = await profileAPI.savePhoto(file);
+        if (response.data.resultCode === 0) {
+            dispatch(savePhotoSuccess(response.data.data.photos));
+        }
     }
 }
 

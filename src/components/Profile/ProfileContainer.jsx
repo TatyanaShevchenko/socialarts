@@ -1,6 +1,6 @@
 import React from "react";
 import Profile from "./Profile";
-import {getUserProfile, getStatus, updateStatus} from "../../redux/profile-reducer";
+import {getUserProfile, getStatus, updateStatus, savePhoto} from "../../redux/profile-reducer";
 import {connect} from "react-redux"
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
@@ -9,10 +9,10 @@ import {follow, requestFriends, unfollow} from "../../redux/users-reducer";
 
 
 class ProfileContainer extends React.Component {
-
-    componentDidMount() {
+     refreshProfile() {
         let userId = this.props.match.params.userId;
-        if (!userId) {
+        if (!userId)
+        {
             if (this.props.isAuth){
                 userId = this.props.authorizedUserId;
             } else {
@@ -21,10 +21,17 @@ class ProfileContainer extends React.Component {
         }
         this.props.getUserProfile(userId);
         this.props.getStatus(userId);
+    }
+
+    componentDidMount() {
+        this.refreshProfile();
         this.props.requestFriends();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.match.params.userId !=prevProps.match.params.userId ){
+            this.refreshProfile();
+        }
         if (prevProps.status !== this.props.status)
         {this.setState({
             status: this.props.status
@@ -47,7 +54,8 @@ class ProfileContainer extends React.Component {
                      friends={this.props.friends}
                      follow={this.props.follow}
                      unfollow={this.props.unfollow}
-                     followInProgress={this.props.followInProgress}/>
+                     followInProgress={this.props.followInProgress}
+                     savePhoto={this.props.savePhoto}/>
         )
     }
 }
@@ -68,7 +76,8 @@ export default compose(
             updateStatus,
             follow,
             unfollow,
-            requestFriends
+            requestFriends,
+            savePhoto
         }),
     withRouter,
     // withAuthRedirect

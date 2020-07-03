@@ -34,6 +34,13 @@
     border-radius: 50%;
     object-fit: cover;
 }
+.upload{
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    background-color: aliceblue;
+}
+
 .needJobPic{
     width: 30px !important;
     height: 30px;
@@ -41,14 +48,13 @@
     object-fit: cover;
 }
 .description {
-    margin-top: 85px;
+    margin-top: 95px;
     text-align: center;
-
+    position: relative;
 }
 
 .description h3 {
     display: inline-block;
-    position: relative;
     margin-bottom: 10px;
 }
 
@@ -81,10 +87,15 @@
     font-size: 12px;
     position: absolute;
     top: 0;
-    right: -80px;
+    right: calc(50% - 100px);
+    transform: translate(50%,-50%);
     color: #3f51b5;
     display: inline-block;
     padding: 5px 15px;
     border-radius: 4px;
     background-color:#e2e7ff;
+}
+.editButton{
+    text-align: left;
+    margin-left: 15px;
 }

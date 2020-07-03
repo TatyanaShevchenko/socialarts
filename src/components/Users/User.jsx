@@ -2,7 +2,6 @@ import React from "react";
 import style from "./Users.module.css";
 import userPhoto from "../../images/user.png";
 import {NavLink} from "react-router-dom";
-import Pagination from "../common/Pagination/Pagination";
 import Button from '@material-ui/core/Button';
 
 const User = ({user, followInProgress, unfollow, follow}) => {
