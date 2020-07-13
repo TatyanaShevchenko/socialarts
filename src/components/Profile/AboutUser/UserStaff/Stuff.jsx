@@ -5,13 +5,12 @@ import Button from "@material-ui/core/Button";
 import React from "react";
 import ProfileStatusWithHooks from "../ProfileStatusWithHooks";
 import styleBtn from "../../../Users/Users.module.css";
+import {Field} from "redux-form";
+import {Input} from "../../../common/FormsControls/FormsControls";
 
 const UserProfile = ({saveProfile, itIsYou, funcFollowBtn, user, setEditMode, ...props}) => {
     return <div className={style.aboutMe}>
         <div className={style.background}>
-            <img
-                src="https://jssors8.azureedge.net/demos/image-slider/img/faded-monaco-scenery-evening-dark-picjumbo-com-image.jpg"
-                alt="background"/>
         </div>
         <div className={style.myInfo}>
             <img className={style.avatar}
@@ -64,6 +63,7 @@ const Stuff = ({contacts, lookingForAJobDescription, lookingForAJob, goToEditMod
                     return <Contact key={key} contactTitle={key} contactLink={contacts[key]}/>
                 })}
 
+
             </div>
             <div className={style.needJob}>
                 <div className={style.flex}>
@@ -79,6 +79,6 @@ const Stuff = ({contacts, lookingForAJobDescription, lookingForAJob, goToEditMod
     )
 }
 const Contact = ({contactTitle, contactLink}) => {
-    return <div><b>{contactTitle}</b>: {contactLink}</div>
+    return <div><b>{contactTitle}</b>:{contactLink}</div>
 }
 export default UserProfile;

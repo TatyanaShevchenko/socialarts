@@ -5,15 +5,13 @@ import {Field, reduxForm} from "redux-form";
 import {Checkbox, Input, Textarea} from "../../../common/FormsControls/FormsControls";
 import ProfileStatusWithHooks from "../ProfileStatusWithHooks";
 import styleBtn from "../../../Users/Users.module.css";
+import formStyle from "../../../common/FormsControls/FormsControls.module.css";
 
-const UserProfileForm = ({saveProfile, itIsYou, funcFollowBtn, user, setEditMode, handleSubmit, ...props}) => {
+const UserProfileForm = ({saveProfile, initialValues, itIsYou, funcFollowBtn, user, setEditMode, handleSubmit,error, ...props}) => {
 
 
     return <div className={style.aboutMe}>
         <div className={style.background}>
-            <img
-                src="https://jssors8.azureedge.net/demos/image-slider/img/faded-monaco-scenery-evening-dark-picjumbo-com-image.jpg"
-                alt="background"/>
         </div>
         <div className={style.myInfo}>
             <img className={style.avatar}
@@ -31,8 +29,10 @@ const UserProfileForm = ({saveProfile, itIsYou, funcFollowBtn, user, setEditMode
                     component={Textarea}/>
                 <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
 
-                <StuffForm contacts={props.profile.contacts}
+                <StuffForm initialValues={initialValues} contacts={props.profile.contacts}
                 lookingForAJobDescription={props.profile.lookingForAJobDescription}/>
+
+                {error ? <div className={formStyle.divError}>{error}</div> : ""}
                 <Button className={style.stuffBtnDown} type="submit" variant="contained" color="secondary">save</Button>
             </form>
 
@@ -44,14 +44,15 @@ const UserProfileForm = ({saveProfile, itIsYou, funcFollowBtn, user, setEditMode
     </div>
 }
 
-const StuffForm = ({contacts, lookingForAJobDescription}) => {
+const StuffForm = ({ contacts, lookingForAJobDescription}) => {
     return (
         <div>
 
             <div className={style.contacts}>
                 <p className={style.bold}>Я в соц. сетях</p>
+
                 {Object.keys(contacts).map(key => {
-                    return <ContactEdit key={key} contactTitle={key} contactLink={contacts[key]}/>
+                   return <ContactEdit key={key} contactTitle={key}/>
                 })}
 
             </div>
@@ -80,14 +81,19 @@ const StuffForm = ({contacts, lookingForAJobDescription}) => {
     )
 }
 
-const ContactEdit = ({contactTitle, contactLink}) => {
-    return <div><b>{contactTitle}</b>:
-        <Field placeholder={contactTitle}
-               name={contactTitle}
-               component={Input}/>
-    </div>
+const ContactEdit = ({contactTitle}) => {
+    return (
+            <div><b>{contactTitle}</b>:
+                <Field
+                    placeholder={contactTitle}
+                       name={"contacts."+contactTitle}
+                       component={Input}/>
+            </div>
+        )
+
 }
 
 
-const UserProfileReduxForm = reduxForm({form: 'aboutMe'})(UserProfileForm);
+const UserProfileReduxForm = reduxForm({form:'aboutMe'})(UserProfileForm);
+
 export default UserProfileReduxForm;

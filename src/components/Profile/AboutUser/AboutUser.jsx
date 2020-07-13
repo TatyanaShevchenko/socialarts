@@ -66,14 +66,18 @@ function AboutUser({saveProfile, ...props}) {
             }
         }
         const submit = (formData) => {
-            saveProfile(formData);
-            setEditMode(false);
+            saveProfile(formData).then(
+                ()=>{
+                    setEditMode(false);
+                }
+            );
         }
 
         return (
             <>
                 {editMode
                     ? <UserProfileReduxForm
+                        initialValues={props.profile}
                         onSubmit={submit}
                         itIsYou={itIsYou}
                         user={user}

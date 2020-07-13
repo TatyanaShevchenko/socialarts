@@ -1,11 +1,12 @@
 import {profileAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'social-arts/profile/ADD-POST';
 const DELETE_POST = 'social-arts/profile/DELETE-POST';
 const SET_USER_PROFILE = 'social-arts/profile/SET-USER-PROFILE';
 const SET_STATUS = 'social-arts/profile/SET-STATUS';
 const SAVE_PHOTO_SUCCESS ='social-arts/profile/SAVE-PHOTO-SUCCESS';
-const SAVE_PROFILE_SUCCESS ='social-arts/profile/SAVE-PROFILE-SUCCESS';
+
 
 
 let initialState = {
@@ -53,11 +54,6 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profile: {...state.profile, photos:action.photos}
             }
-        case SAVE_PROFILE_SUCCESS:
-            return {
-                ...state,
-                profile: {...state.profile}
-            }
 
         default:
             return state;
@@ -77,7 +73,6 @@ export const setStatus = (status) => ({
     status: status
 });
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos});
-export const saveProfileSuccess = (profile) => ({type: SAVE_PROFILE_SUCCESS, profile});
 
 //thunk creators
 
@@ -105,10 +100,15 @@ export const savePhoto = (file) => {
 }
 
 export const saveProfile = (profile) => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
+        const userId = getState().auth.userId;
         let response = await profileAPI.saveProfile(profile);
         if (response.data.resultCode === 0) {
-            dispatch(saveProfileSuccess(response.data.data));
+            dispatch(getUserProfile(userId));
+        } else {
+            let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+            dispatch(stopSubmit("aboutMe", {_error: message}));
+            return Promise.reject(response.data.messages[0]);
         }
     }
 }
